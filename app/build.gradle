@@ -14,8 +14,12 @@ repositories {
 
 dependencies {
     implementation 'info.picocli:picocli:4.6.3'
+    // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.3'
+
+    // This dependency is used by the application.
     implementation 'com.google.guava:guava:30.1.1-jre'
 }
 

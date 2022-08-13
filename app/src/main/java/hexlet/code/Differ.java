@@ -11,19 +11,17 @@ import java.nio.file.Paths;
 
 public class Differ {
     public static String generate(String filepath1, String filepath2) {
+        String generateResult = "";
         try {
-            String json1 = getJsonData(filepath1);
-            String json2 = getJsonData(filepath2);
-            ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, Object> map1 = objectMapper.readValue(json1, Map.class);
-            Map<String, Object> map2 = objectMapper.readValue(json2, Map.class);
+            Map<String, Object> map1 = Parser.parseFile(filepath1);
+            Map<String, Object> map2 = Parser.parseFile(filepath2);
             Map<String, String> res = genDiff(map1, map2);
-            System.out.println(getStringValuesMap(res));
+            generateResult = getStringValuesMap(res);
         } catch (Exception e) {
-            System.out.println("An error has ossured in main()!");
+            System.out.println("error in main");
             e.printStackTrace();
         }
-        return "";
+        return generateResult;
     }
 
     private static String getJsonData(String filepath) throws Exception {
@@ -32,7 +30,7 @@ public class Differ {
             Path path = Paths.get(filepath);
             json = Files.readString(path);
         } catch (Exception e) {
-            System.out.println("An error has ossured in getJsonFromFile()!");
+            System.out.println(" error in getJsonFromFile");
             e.printStackTrace();
         }
         return json;

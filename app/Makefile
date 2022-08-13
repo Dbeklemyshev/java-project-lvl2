@@ -11,5 +11,7 @@ lint:
 	./gradlew checkstyleMain checkstyleTest
 check-updates:
 	./gradlew useLatestVersions
+test:
+	./gradlew test
 
 .PHONY: build

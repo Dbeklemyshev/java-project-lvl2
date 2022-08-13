@@ -16,19 +16,34 @@ class AppTest {
     }
 
     @Test
-    void appDifferGenerate() {
+    void appJsonDifferGenerate() {
         String filepath1 = "src/test/resources/file1.json";
         String filepath2 = "src/test/resources/file2.json";
         String result = "{"
                 + "\n- follow: false"
-                + "\nhost: hexlet.io"
+                + "\n  host: hexlet.io"
                 + "\n- proxy: 123.234.53.22"
                 + "\n- timeout: 50"
                 + "\n+ timeout: 20"
                 + "\n+ verbose: true"
-                + "}";
+                + "\n}";
         String diff = Differ.generate(filepath1, filepath2);
-        assertNotNull(diff, "app should have a greeting");
+        assertEquals(diff, result);
+    }
+
+    @Test
+    void appYmlDifferGenerate() {
+        String filepath1 = "src/test/resources/file1.yml";
+        String filepath2 = "src/test/resources/file2.json";
+        String result = "{"
+                + "\n- follow: false"
+                + "\n  host: hexlet.io"
+                + "\n- proxy: 123.234.53.22"
+                + "\n- timeout: 50"
+                + "\n+ timeout: 20"
+                + "\n+ verbose: true"
+                + "\n}";
+        String diff = Differ.generate(filepath1, filepath2);
         assertEquals(diff, result);
     }
 }
