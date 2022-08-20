@@ -14,9 +14,9 @@ public class Differ {
             Map<String, Object> map1 = Parser.parseFile(filepath1);
             Map<String, Object> map2 = Parser.parseFile(filepath2);
             Map<String, List<String>> res = genDiff(map1, map2);
-            generateResult = getStringValuesTemplate(res);
+            generateResult = getStylish(res);
         } catch (Exception e) {
-            System.out.println(" error in generate");
+            System.out.println("An error has ossured in main()!");
             e.printStackTrace();
         }
         return generateResult;
@@ -71,7 +71,7 @@ public class Differ {
         return result;
     }
 
-    private static String getStringValuesTemplate(Map<String, List<String>> map) {
+    private static String getStylish(Map<String, List<String>> map) {
         List<String> list = new LinkedList<>();
         String result = "{";
         for (Map.Entry<String, List<String>> mapEntity: map.entrySet()) {
