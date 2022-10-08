@@ -16,9 +16,10 @@ class AppTest {
     }
 
     @Test
-    void appJsonDifferGenerate() {
+    void appJsonDifferGenerateStylish() {
         String filepath1 = "src/test/resources/file1_1.json";
         String filepath2 = "src/test/resources/file2_2.json";
+        String format = "stylish";
         String result = "{"
                 + "\n  chars1: [a, b, c]"
                 + "\n- chars2: [d, e, f]"
@@ -44,14 +45,15 @@ class AppTest {
                 + "\n- setting3: true"
                 + "\n+ setting3: none"
                 + "\n}";
-        String diff = Differ.generate(filepath1, filepath2);
+        String diff = Differ.generate(filepath1, filepath2, format);
         assertEquals(diff, result);
     }
 
     @Test
-    void appYmlDifferGenerate() {
+    void appYmlDifferGenerateStylish() {
         String filepath1 = "src/test/resources/file1_1.yml";
-        String filepath2 = "src/test/resources/file2_2.json";
+        String filepath2 = "src/test/resources/file2_2.yml";
+        String format = "stylish";
         String result = "{"
                 + "\n  chars1: [a, b, c]"
                 + "\n- chars2: [d, e, f]"
@@ -77,41 +79,51 @@ class AppTest {
                 + "\n- setting3: true"
                 + "\n+ setting3: none"
                 + "\n}";
-        String diff = Differ.generate(filepath1, filepath2);
-        assertEquals(diff, result);
-    }
-
-    /*
-    @Test
-    void appJsonDifferGenerate() {
-        String filepath1 = "src/test/resources/file1.json";
-        String filepath2 = "src/test/resources/file2.json";
-        String result = "{"
-            + "\n- follow: false"
-            + "\n  host: hexlet.io"
-            + "\n- proxy: 123.234.53.22"
-            + "\n- timeout: 50"
-            + "\n+ timeout: 20"
-            + "\n+ verbose: true"
-            + "\n}";
-        String diff = Differ.generate(filepath1, filepath2);
+        String diff = Differ.generate(filepath1, filepath2, format);
         assertEquals(diff, result);
     }
 
     @Test
-    void appYmlDifferGenerate() {
-        String filepath1 = "src/test/resources/file1.yml";
-        String filepath2 = "src/test/resources/file2.json";
-        String result = "{"
-                + "\n- follow: false"
-                + "\n  host: hexlet.io"
-                + "\n- proxy: 123.234.53.22"
-                + "\n- timeout: 50"
-                + "\n+ timeout: 20"
-                + "\n+ verbose: true"
-                + "\n}";
-        String diff = Differ.generate(filepath1, filepath2);
+    void appJsonDifferGeneratePlain() {
+        String filepath1 = "src/test/resources/file1_1.json";
+        String filepath2 = "src/test/resources/file2_2.json";
+        String format = "plain";
+        String result = "Property 'chars2' was updated. From [complex value] to false"
+                + "\nProperty 'checked' was updated. From false to true"
+                + "\nProperty 'default' was updated. From null to [complex value]"
+                + "\nProperty 'id' was updated. From 45 to null"
+                + "\nProperty 'key1' was removed"
+                + "\nProperty 'key2' was added with value: 'value2'"
+                + "\nProperty 'numbers2' was updated. From [complex value] to [complex value]"
+                + "\nProperty 'numbers3' was removed"
+                + "\nProperty 'numbers4' was added with value: [complex value]"
+                + "\nProperty 'obj1' was added with value: [complex value]"
+                + "\nProperty 'setting1' was updated. From 'Some value' to 'Another value'"
+                + "\nProperty 'setting2' was updated. From 200 to 300"
+                + "\nProperty 'setting3' was updated. From true to 'none'";
+        String diff = Differ.generate(filepath1, filepath2, format);
         assertEquals(diff, result);
     }
-     */
+
+    @Test
+    void appYmlDifferGeneratePlain() {
+        String filepath1 = "src/test/resources/file1_1.yml";
+        String filepath2 = "src/test/resources/file2_2.yml";
+        String format = "plain";
+        String result = "Property 'chars2' was updated. From [complex value] to false"
+                + "\nProperty 'checked' was updated. From false to true"
+                + "\nProperty 'default' was updated. From null to [complex value]"
+                + "\nProperty 'id' was updated. From 45 to null"
+                + "\nProperty 'key1' was removed"
+                + "\nProperty 'key2' was added with value: 'value2'"
+                + "\nProperty 'numbers2' was updated. From [complex value] to [complex value]"
+                + "\nProperty 'numbers3' was removed"
+                + "\nProperty 'numbers4' was added with value: [complex value]"
+                + "\nProperty 'obj1' was added with value: [complex value]"
+                + "\nProperty 'setting1' was updated. From 'Some value' to 'Another value'"
+                + "\nProperty 'setting2' was updated. From 200 to 300"
+                + "\nProperty 'setting3' was updated. From true to 'none'";
+        String diff = Differ.generate(filepath1, filepath2, format);
+        assertEquals(diff, result);
+    }
 }

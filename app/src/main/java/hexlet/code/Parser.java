@@ -2,6 +2,7 @@ package hexlet.code;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+
 import java.util.Map;
 import java.nio.file.Path;
 import java.nio.file.Files;
@@ -20,7 +21,7 @@ public class Parser {
         return str;
     }
 
-    public static Map<String, Object> parseFile(String filepath)  throws Exception {
+    public static Map<String, Object> parseFile(String filepath) throws Exception {
         String dataFromFile = getDataFromFile(filepath);
         Map<String, Object> map = null;
         if (filepath.endsWith(".json")) {
