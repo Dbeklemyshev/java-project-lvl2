@@ -1,33 +1,41 @@
 package hexlet.code;
 
-//import java.util.Set;
-//import java.util.TreeSet;
 import java.util.Map;
-//import java.util.LinkedHashMap;
-//import java.util.LinkedList;
 import java.util.List;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Formatter {
-    public static String getStringFormat(List<Map<String, Object>> list, String format) {
-        if (format == "stylish") {
-            return getStringValuesStylish(list);
-        } else {
+    public static String getStringFormat(List<Map<String, Object>> list, String format) throws Exception {
+        if (format.equals("plain")) {
             return getStringValuesPlain(list);
+        } else if (format.equals("json")) {
+            return getStringValuesJson(list);
+        } else {
+            return getStringValuesStylish(list);
         }
+    }
+
+    private static String getStringValuesJson(List<Map<String, Object>> list) throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String result = "";
+        for (Map<String, Object> map: list) {
+            result += objectMapper.writeValueAsString(map);
+        }
+        return result;
     }
 
     private static String getStringValuesStylish(List<Map<String, Object>> list) {
         String result = "{";
         for (Map<String, Object> map: list) {
             if (map.get("status") == "add") {
-                result += "\n" + "+ " + map.get("key") + ": " + map.get("newValue");
+                result += "\n  + " + map.get("key") + ": " + map.get("newValue");
             } else if (map.get("status") == "remove") {
-                result += "\n" + "- " + map.get("key") + ": " + map.get("oldValue");
+                result += "\n  - " + map.get("key") + ": " + map.get("oldValue");
             } else if (map.get("status") == "change") {
-                result += "\n" + "- " + map.get("key") + ": " + map.get("oldValue")
-                        + "\n+ " + map.get("key") + ": " + map.get("newValue");
+                result += "\n  - " + map.get("key") + ": " + map.get("oldValue")
+                        + "\n  + " + map.get("key") + ": " + map.get("newValue");
             } else {
-                result += "\n" + "  " + map.get("key") + ": " + map.get("oldValue");
+                result += "\n    " + map.get("key") + ": " + map.get("oldValue");
             }
         }
         result += "\n}";

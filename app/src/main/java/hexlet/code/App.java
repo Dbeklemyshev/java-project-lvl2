@@ -10,7 +10,7 @@ import picocli.CommandLine.Parameters;
         description = "Compares two configuration files and shows a difference.")
 
 public class App implements Runnable {
-    @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
+    @Option(names = { "-f", "--format" }, defaultValue = "stylish", description = "output format [default: stylish]")
     private static String format;
 
     @Parameters(paramLabel = "filepath1",
@@ -31,7 +31,8 @@ public class App implements Runnable {
 
     public static void main(String[] args) throws Exception {
         int exitCode = new CommandLine(new App()).execute(args);
-        String diff = Differ.generate(filepath1, filepath2, format);
+        String generateResult = Differ.generate(filepath1, filepath2, format);
+        System.out.println(generateResult);
         System.exit(exitCode);
     }
 }
