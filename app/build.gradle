@@ -3,6 +3,7 @@ plugins {
     id 'application'
     id 'com.github.ben-manes.versions' version '0.39.0'
     id 'checkstyle'
+    id 'jacoco'
 }
 
 group = "hexlet.code"
@@ -28,15 +29,28 @@ application {
     mainClass = 'hexlet.code.App'
 }
 
+jacoco {
+    toolVersion = "0.8.8"
+}
+
 test {
+//    finalizedBy jacocoTestReport // report is always generated after tests run
     useJUnitPlatform()
 }
 
-tasks.named('test') {
-    // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
+jacocoTestReport {
+//    dependsOn test
+    reports {
+        xml.required = true
+    }
 }
+
+//tasks.named('test') {
+//    // Use JUnit Platform for unit tests.
+//    useJUnitPlatform()
+//}
 
 compileJava {
     options.release = 16
 }
+
