@@ -13,5 +13,7 @@ check-updates:
 	./gradlew useLatestVersions
 test:
 	./gradlew test
+report:
+	./gradlew jacocoTestReport
 
 .PHONY: build
