@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ae33fae-216a-4cb0-a7f6-5d7abfba4f6f" name="Changes" comment="replace gradle to root prj dir#3">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/main1.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/main1.yml" afterDir="false" />
+    <list default="true" id="5ae33fae-216a-4cb0-a7f6-5d7abfba4f6f" name="Changes" comment="main1.yml fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +72,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667209821681</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="main1.yml fix">
+      <created>1667214830016</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667214830016</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -91,6 +98,7 @@
     <MESSAGE value="replace gradle to root prj dir" />
     <MESSAGE value="replace gradle to root prj dir#2" />
     <MESSAGE value="replace gradle to root prj dir#3" />
-    <option name="LAST_COMMIT_MESSAGE" value="replace gradle to root prj dir#3" />
+    <MESSAGE value="main1.yml fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="main1.yml fix" />
   </component>
 </project>
