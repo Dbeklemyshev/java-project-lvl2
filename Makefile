@@ -1,19 +1,19 @@
 clean:
-	gradlew clean
+	./gradlew clean
 build: ./gradlew clean build
 install:
-	gradlew clean install
+	./gradlew clean install
 run-dist:
 	build/install/app/bin/app
 run:
-	gradlew run
+	./gradlew run
 lint:
-	gradlew checkstyleMain checkstyleTest
+	./gradlew checkstyleMain checkstyleTest
 check-updates:
-	gradlew useLatestVersions
+	./gradlew useLatestVersions
 test:
-	gradlew test
+	./gradlew test
 report:
-	gradlew jacocoTestReport
+	./gradlew jacocoTestReport
 
 .PHONY: build
